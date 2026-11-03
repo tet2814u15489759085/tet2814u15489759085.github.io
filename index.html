@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Алексей Рощупкин — AI-разработчик</title>
+<meta name="description" content="Портфолио Алексея Рощупкина: веб-сервисы, программы и ИИ-ассистенты, сделанные вместе с ИИ-агентом Claude Code. 15+ проектов, 10 сертификатов Claude Academy.">
+<meta property="og:title" content="Алексей Рощупкин — AI-разработчик">
+<meta property="og:description" content="Веб-сервисы, десктопные программы и ИИ-ассистенты — от идеи до работающего продукта.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-2: #efede7;
+  --ink: #17171a;
+  --ink-2: #4a4a52;
+  --ink-3: #7b7b84;
+  --line: #e2dfd7;
+  --accent: #c8492a;
+  --accent-ink: #ffffff;
+  --accent-soft: #f6e3dc;
+  --shadow: 0 1px 2px rgba(20, 20, 30, .06), 0 8px 24px rgba(20, 20, 30, .06);
+  --radius: 16px;
+  --font: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111114; --surface: #19191d; --surface-2: #222228; --ink: #f1efe9; --ink-2: #c3c1bb; --ink-3: #8d8b86;
+    --line: #2c2c33; --accent: #ff7a52; --accent-ink: #1a0d08; --accent-soft: #3a2119;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111114; --surface: #19191d; --surface-2: #222228; --ink: #f1efe9; --ink-2: #c3c1bb; --ink-3: #8d8b86;
+  --line: #2c2c33; --accent: #ff7a52; --accent-ink: #1a0d08; --accent-soft: #3a2119;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font);
+  font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-inline: max(20px, env(safe-area-inset-left)); }
+
+/* навигация */
+.nav {
+  position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px);
+}
+.nav .wrap { display: flex; align-items: center; gap: 24px; height: 60px; }
+.nav__name { font-weight: 800; text-decoration: none; letter-spacing: -.01em; white-space: nowrap; }
+.nav__links { display: flex; gap: 22px; margin-left: auto; }
+.nav__links a { text-decoration: none; color: var(--ink-2); font-size: 15px; font-weight: 600; }
+.nav__links a:hover { color: var(--accent); }
+@media (max-width: 760px) { .nav__links { display: none; } }
+
+/* первый экран */
+.hero { padding-block: 72px 56px; }
+.hero__kicker {
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 13px;
+  color: var(--accent); background: var(--accent-soft); padding: 6px 12px; border-radius: 999px;
+}
+.hero__kicker::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.hero h1 { font-size: clamp(40px, 7vw, 76px); line-height: 1.02; letter-spacing: -.035em; margin: 22px 0 12px; font-weight: 800; }
+.hero__role { font-size: clamp(20px, 2.6vw, 28px); font-weight: 700; color: var(--ink-2); margin: 0 0 22px; letter-spacing: -.01em; }
+.hero__lead { font-size: 19px; max-width: 760px; color: var(--ink-2); margin: 0 0 30px; }
+.hero__lead strong { color: var(--ink); }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 15px;
+  padding: 12px 20px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.btn:hover { border-color: var(--ink-3); }
+.print-only { display: none; font-weight: 700; margin: 0; }
+.btn--primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn--primary:hover { filter: brightness(1.06); border-color: var(--accent); }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 48px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+.stat b { display: block; font-size: 30px; line-height: 1.1; letter-spacing: -.02em; }
+.stat span { color: var(--ink-3); font-size: 14px; }
+@media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } .hero { padding-block: 44px 36px; } }
+
+/* секции */
+.section { padding-block: 64px; border-top: 1px solid var(--line); }
+.section__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 32px; }
+.section h2 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -.03em; line-height: 1.1; margin: 0; }
+.section__note { color: var(--ink-3); font-size: 15px; max-width: 520px; margin: 0; }
+
+/* как я работаю */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: step; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+.step::before {
+  counter-increment: step; content: "0" counter(step); font-family: var(--mono); color: var(--accent); font-size: 14px;
+}
+.step h3 { font-size: 18px; margin: 8px 0 8px; letter-spacing: -.01em; }
+.step p { margin: 0; color: var(--ink-2); font-size: 15px; }
+@media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+
+/* проекты */
+.project {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px;
+  padding-block: 44px; border-bottom: 1px solid var(--line);
+}
+.project:last-of-type { border-bottom: 0; }
+.project__text { align-self: start; position: sticky; top: 84px; }
+.project__num { font-family: var(--mono); color: var(--ink-3); font-size: 13px; }
+.project h3 { font-size: clamp(26px, 3vw, 34px); letter-spacing: -.025em; line-height: 1.15; margin: 6px 0 8px; }
+.project__tagline { font-size: 17px; color: var(--ink-2); margin: 0 0 18px; }
+.project ul { margin: 0 0 20px; padding: 0; list-style: none; }
+.project li { position: relative; padding-left: 20px; margin-bottom: 9px; color: var(--ink-2); font-size: 15.5px; }
+.project li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 7px; height: 2px; background: var(--accent); }
+.project li strong { color: var(--ink); font-weight: 700; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); background: var(--surface-2);
+  padding: 4px 9px; border-radius: 7px; white-space: nowrap;
+}
+.badge-status { display: inline-block; font-size: 13px; font-weight: 700; color: var(--ink-3); margin-top: 14px; }
+.shots { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-content: start; }
+.shots > :first-child, .shots > :nth-child(2):last-child { grid-column: 1 / -1; }
+.shots--phones { grid-template-columns: repeat(3, 1fr); }
+.shots--phones > :first-child { grid-column: auto; }
+.shots--single { grid-template-columns: 1fr; }
+.shot { margin: 0; }
+.shot button {
+  display: block; width: 100%; padding: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+  background: var(--surface-2); cursor: zoom-in; box-shadow: var(--shadow);
+}
+.shot button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.shot figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; }
+@media (max-width: 900px) {
+  .project { grid-template-columns: 1fr; gap: 22px; }
+  .project__text { position: static; }
+}
+@media (max-width: 560px) { .shots { grid-template-columns: 1fr; } .shots--phones { grid-template-columns: 1fr 1fr; } }
+
+/* схема n8n */
+.flow-box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; box-shadow: var(--shadow); overflow-x: auto; }
+.flow-box svg { min-width: 640px; max-width: 900px; width: 100%; height: auto; display: block; margin-inline: auto; }
+.project--wide { grid-template-columns: 1fr; gap: 26px; }
+.project--wide .project__text { position: static; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0 36px; }
+.project--wide .project__text > :nth-child(-n+3) { grid-column: 1; }
+.project--wide .project__text > ul { grid-column: 2; grid-row: 1 / span 4; margin: 0; }
+.project--wide .project__text > .tags { grid-column: 1; }
+@media (max-width: 900px) { .project--wide .project__text { display: block; } .project--wide .project__text > ul { margin-bottom: 20px; } }
+.flow-node rect { fill: var(--surface-2); stroke: var(--line); }
+.flow-node.ai rect { fill: var(--accent-soft); stroke: var(--accent); }
+.flow-node text { fill: var(--ink); font-family: var(--font); font-size: 13px; font-weight: 700; }
+.flow-node text.sub { fill: var(--ink-3); font-weight: 500; font-size: 11.5px; }
+.flow-arrow { stroke: var(--ink-3); stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+.flow-label { fill: var(--ink-3); font-family: var(--mono); font-size: 11px; }
+
+/* другие проекты */
+/* 5 карточек: 3 сверху, 2 снизу */
+.mini-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.mini { grid-column: span 2; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; }
+.mini:nth-last-child(-n+2) { grid-column: span 3; }
+.mini h3 { font-size: 18px; margin: 0 0 6px; letter-spacing: -.01em; }
+.mini p { margin: 0 0 14px; color: var(--ink-2); font-size: 15px; flex: 1; }
+@media (max-width: 900px) {
+  .mini-grid { grid-template-columns: 1fr 1fr; }
+  .mini, .mini:nth-last-child(-n+2) { grid-column: auto; }
+  .mini:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) { .mini-grid { grid-template-columns: 1fr; } }
+
+/* сертификаты */
+.certs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.cert { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.cert img { aspect-ratio: 720 / 491; object-fit: cover; border-bottom: 1px solid var(--line); }
+.cert__body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.cert__title { font-weight: 800; font-size: 15.5px; line-height: 1.3; }
+.cert__meta { color: var(--ink-3); font-size: 13px; }
+.cert a { margin-top: auto; font-size: 14px; font-weight: 700; color: var(--accent); text-decoration: none; }
+.cert a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .certs { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px) { .certs { grid-template-columns: 1fr; } }
+
+/* навыки */
+.skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.skill { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+.skill h3 { margin: 0 0 12px; font-size: 16px; }
+.skill--main { border-color: var(--accent); background: linear-gradient(var(--accent-soft), var(--surface) 70%); }
+@media (max-width: 760px) { .skills { grid-template-columns: 1fr; } }
+
+/* контакты */
+.contact { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+.contact p { color: var(--ink-2); font-size: 18px; margin: 12px 0 0; }
+.contact__list { display: grid; gap: 10px; }
+.contact__item {
+  display: flex; justify-content: space-between; gap: 16px; align-items: center; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; text-decoration: none;
+}
+.contact__item span { color: var(--ink-3); font-size: 14px; }
+.contact__item b { font-weight: 700; overflow-wrap: anywhere; text-align: right; }
+button.contact__item { width: 100%; font: inherit; color: inherit; cursor: pointer; text-align: left; }
+a.contact__item:hover, button.contact__item:hover { border-color: var(--accent); }
+button.contact__item:focus-visible, a.contact__item:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.contact__item--tg { background: var(--accent); border-color: var(--accent); }
+.contact__item--tg span, .contact__item--tg b { color: var(--accent-ink); }
+.contact__item--tg:hover { filter: brightness(1.06); }
+.contact__tg { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px !important; }
+.toast {
+  position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 90;
+  background: var(--ink); color: var(--bg); font-weight: 700; font-size: 15px; padding: 12px 18px; border-radius: 12px;
+  box-shadow: var(--shadow); max-width: calc(100% - 32px); text-align: center;
+}
+@media (max-width: 760px) { .contact { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .contact__item { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .contact__item b { text-align: left; }
+  .contact__item--tg { flex-direction: row; align-items: center; }
+}
+footer { padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); color: var(--ink-3); font-size: 14px; border-top: 1px solid var(--line); }
+
+/* просмотр картинок */
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; background: rgba(8, 8, 10, .92); display: grid;
+  grid-template-rows: 1fr auto; padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+}
+.lightbox img { max-width: 100%; max-height: 100%; margin: auto; object-fit: contain; border-radius: 8px; min-height: 0; }
+.lightbox__bar { display: flex; align-items: center; gap: 12px; justify-content: center; color: #ddd; font-size: 14px; padding-top: 12px; }
+.lightbox__bar span { flex: 1; text-align: center; }
+.lb-btn {
+  background: rgba(255, 255, 255, .12); color: #fff; border: 0; border-radius: 10px; padding: 10px 14px;
+  font: 600 15px var(--font); cursor: pointer;
+}
+.lb-btn:hover { background: rgba(255, 255, 255, .22); }
+
+/* печать / PDF */
+@media print {
+  @page { size: A4; margin: 14mm 12mm; }
+  :root { --bg: #fff; --surface: #fff; --shadow: none; }
+  .nav, .lightbox, .no-print { display: none !important; }
+  body { font-size: 12.5px; }
+  .hero { padding-block: 0 20px; }
+  .section { padding-block: 24px; }
+  .project { grid-template-columns: 1fr 1fr; gap: 20px; padding-block: 20px; break-inside: avoid; }
+  .project__text { position: static; }
+  .shots > :nth-child(n+2) { display: none; }
+  .shot figcaption { display: none; }
+  .project--wide { grid-template-columns: 1fr; }
+  #projects { break-before: page; border-top: 0; }
+  .section__head { break-after: avoid; }
+  .btns { display: none; }
+  .print-only { display: block !important; }
+  .mini, .cert, .step, .skill { break-inside: avoid; }
+  a { text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Навигация по странице">
+  <div class="wrap">
+    <a class="nav__name" href="#top">Алексей Рощупкин</a>
+    <div class="nav__links">
+      <a href="#projects">Проекты</a>
+      <a href="#process">Как я работаю</a>
+      <a href="#certificates">Сертификаты</a>
+      <a href="#skills">Навыки</a>
+      <a href="#contact">Контакты</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div class="wrap">
+      <span class="hero__kicker">Открыт к предложениям · Санкт-Петербург или удалённо</span>
+      <h1>Алексей Рощупкин</h1>
+      <p class="hero__role">AI-разработчик · Python, TypeScript</p>
+      <p class="hero__lead">Делаю веб-сервисы, программы для Windows и macOS и ИИ-ассистентов вместе с ИИ-агентом <strong>Claude Code</strong>. Я отвечаю за задачу, устройство, проверку и запуск, агент — за скорость написания кода. Ниже — проекты, которые я довёл до работающего состояния.</p>
+      <p class="print-only">Сайт: tet2814u15489759085.github.io ·rohupkinalex56@mail.ru · Telegram @shapishkin · Санкт-Петербург, готов к удалёнке</p>
+      <div class="btns">
+        <a class="btn btn--primary" href="#projects">Смотреть проекты</a>
+        <a class="btn" href="#contact">Связаться</a>
+        <a class="btn no-print" href="portfolio.pdf" download>Скачать PDF</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>15+</b><span>проектов с января 2026</span></div>
+        <div class="stat"><b>10</b><span>сертификатов Claude Academy</span></div>
+        <div class="stat"><b>4</b><span>направления: веб, десктоп, ИИ, автоматизация</span></div>
+        <div class="stat"><b>Win + Mac</b><span>сборки программ через GitHub Actions</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Как я работаю</h2>
+        <p class="section__note">ИИ пишет код быстро, но не знает, что нужно человеку и где система сломается. Это моя часть работы.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Разбираю задачу</h3><p>Кто будет пользоваться, какие данные, что должно произойти в итоге и где узкие места.</p></div>
+        <div class="step"><h3>Веду ИИ-агента по шагам</h3><p>Ставлю задачи Claude Code небольшими частями, проверяю каждое решение и направляю.</p></div>
+        <div class="step"><h3>Проверяю на реальном</h3><p>Автотесты, логи, прогоны на настоящих данных. Ошибку разбираю до причины, а не прячу.</p></div>
+        <div class="step"><h3>Довожу до запуска</h3><p>Сервер, домен и SSL, сборки под Windows и macOS, инструкция для пользователя.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Проекты</h2>
+        <p class="section__note">Скриншоты сняты с локального запуска на демо-данных: серверы, на которых работали сайты, сейчас отключены.</p>
+      </div>
+
+      <!-- 01 WellPlex -->
+      <article class="project" id="wellplex">
+        <div class="project__text">
+          <div class="project__num">01 · веб-платформа + ИИ</div>
+          <h3>WellPlex — фитнес-платформа с ИИ-диетологом</h3>
+          <p class="project__tagline">Сервис для тренировок и питания, где встречаются ученики, тренеры и фитнес-клубы.</p>
+          <ul>
+            <li><strong>ИИ составляет меню на 7 дней</strong> по анкете и считает КБЖУ; распознаёт блюда по фото (Qwen API).</li>
+            <li><strong>Связка «тренер — ученик»:</strong> заявки, анкета старта, тренировки и питание от тренера, дневник ученика.</li>
+            <li>Трекеры тренировок с перетаскиванием упражнений, питания, воды и замеров тела с графиками.</li>
+            <li>Подписки с онлайн-оплатой, реферальная программа, SEO-блог.</li>
+            <li>Бэкенд — 30 модулей NestJS и 46 таблиц PostgreSQL. Работал в продакшене на VPS (Nginx, PM2, SSL).</li>
+          </ul>
+          <div class="tags"><span class="tag">Next.js 15</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span><span class="tag">NestJS 11</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span><span class="tag">Qwen API</span></div>
+        </div>
+        <div class="shots" data-gallery="WellPlex">
+          <figure class="shot"><button type="button"><img src="img/wellplex-landing.webp" width="1440" height="900" alt="WellPlex: главная страница" loading="lazy"></button><figcaption>Главная страница</figcaption></figure>
+          <figure class="shot"><button type="button"><img src="img/wellplex-menu.webp" width="960" height="760" alt="WellPlex: меню на 7 дней от ИИ" loading="lazy"></button><figcaption>ИИ-планировщик меню</figcaption></figure>
+          <figure class="shot"><button type="button"><img src="img/wellplex-body.webp" width="960" height="650" alt="WellPlex: замеры тела и динамика веса" loading="lazy"></button><figcaption>Замеры тела и динамика веса</figcaption></figure>
+          <figure class="shot"><button type="button"><img src="img/wellplex-trainer.webp" width="1060" height="700" alt="WellPlex: кабинет тренера, список учеников" loading="lazy"></button><figcaption>Кабинет тренера: ученики и заявки</figcaption></figure>
+          <figure class="shot"><button type="button"><img src="img/wellplex-workouts.webp" width="960" height="820" alt="WellPlex: трекер тренировок" loading="lazy"></button><figcaption>Трекер тренировок</figcaption></figure>
+        </div>
+      </article>
+
+      <!-- 02 Ассистент -->
+      <article class="project" id="assistant">
+        <div class="project__text">
+          <div class="project__num">02 · ИИ-ассистент · локальные модели</div>
+          <h3>«Ассистент» — ИИ-помощник с камерой и голосом</h3>
+          <p class="project__tagline">Помощник для компьютера, который видит, слышит и действует. Все нейросети работают на домашней видеокарте 8 ГБ, без облака.</p>
+          <ul>
+            <li><strong>Видит через веб-камеру:</strong> описывает обстановку, узнаёт людей по лицу, находит предметы.</li>
+            <li><strong>Говорит голосом:</strong> распознавание речи GigaAM (~0,3 с на фразу), живой синтез Qwen3-TTS, кодовое слово, режим «без рук», узнаёт голос владельца.</li>
+            <li>Пишет и звонит в Telegram от имени помощника; в режиме охраны присылает снимок, если в кадре чужой.</li>
+            <li>Сравнивает цены на Яндекс Маркете, Ozon и Wildberries, управляет браузером, находит файлы на компьютере.</li>
+            <li>Диспетчер команд проверен автотестами на реальных фразах пользователя; память — SQLite и ChromaDB.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Ollama · Qwen</span><span class="tag">YOLO11</span><span class="tag">OpenCV</span><span class="tag">GigaAM</span><span class="tag">Qwen3-TTS</span><span class="tag">ChromaDB</span><span class="tag">Telethon</span><span class="tag">pywebview</span></div>
+        </div>
+        <div class="shots shots--single" data-gallery="«Ассистент»">
+          <figure class="shot"><button type="button"><img src="img/assistant-chat.webp" width="1600" height="1032" alt="«Ассистент»: окно чата" loading="lazy"></button><figcaption>Главное окно: камера, чат, статусы модели и охраны</figcaption></figure>
+        </div>
+      </article>
+
+      <!-- 03 Запись урока -->
+      <article class="project" id="lesson">
+        <div class="project__text">
+          <div class="project__num">03 · десктоп · распознавание речи</div>
+          <h3>«Запись урока» — конспект онлайн-урока для репетиторов</h3>
+          <p class="project__tagline">Записывает урок в Discord или Телемосте, превращает речь в текст и готовит файл, по которому любая нейросеть сделает конспект ученику.</p>
+          <ul>
+            <li><strong>Две дорожки:</strong> микрофон репетитора и звук только программы урока, поэтому реплики не надо разделять по голосам.</li>
+            <li><strong>Расшифровка локально, в 20 раз быстрее реального времени</strong> — можно прямо во время урока, нагрузка около 1% процессора.</li>
+            <li>Восстанавливается после сбоев, сжимает звук в Opus (в 35 раз меньше WAV), кладёт готовый файл в буфер обмена.</li>
+            <li>Собрана в готовый пакет для Windows с самопроверкой и инструкцией.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">GigaAM</span><span class="tag">Silero VAD</span><span class="tag">WASAPI (ctypes)</span><span class="tag">pywebview</span><span class="tag">PyInstaller</span></div>
+        </div>
+        <div class="shots" data-gallery="«Запись урока»">
+          <figure class="shot"><button type="button"><img src="img/lesson-rec.webp" width="1400" height="977" alt="«Запись урока»: идёт урок, расшифровка по ходу" loading="lazy"></button><figcaption>Идёт урок — текст появляется по ходу разговора</figcaption></figure>
+          <figure class="shot"><button type="button"><img src="img/lesson-list.webp" width="1400" height="977" alt="«Запись урока»: список записей" loading="lazy"></button><figcaption>Записи и файл для нейросети</figcaption></figure>
+        </div>
+      </article>
+
+      <!-- 04 Ассистент по звонкам -->
+      <article class="project" id="calls">
+        <div class="project__text">
+          <div class="project__num">04 · ИИ-агент · голос</div>
+          <h3>«Ассистент по звонкам» — ИИ-участник онлайн-встреч</h3>
+          <p class="project__tagline">Агент подключается к звонку в Яндекс Телемосте, ведёт расшифровку и отвечает голосом, опираясь на документы компании.</p>
+          <ul>
+            <li><strong>Три режима:</strong> только слушать, отвечать, когда позвали по имени, или участвовать в разговоре.</li>
+            <li><strong>База знаний:</strong> загружаете договоры и брифы — агент отвечает по ним (поиск по ChromaDB).</li>
+            <li>После звонка — итоги и список задач; история звонков сохраняется.</li>
+            <li>Расширение Chrome захватывает звук вкладки, сервер на FastAPI связан с ним через WebSocket. Ответы — Claude API или локальная LLaMA.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">WebSocket</span><span class="tag">Claude API</span><span class="tag">Yandex SpeechKit</span><span class="tag">ChromaDB</span><span class="tag">Chrome MV3</span></div>
+        </div>
+        <div class="shots shots--single" data-gallery="«Ассистент по звонкам»">
+          <figure class="shot"><button type="button"><img src="img/call-assistant.webp" width="1600" height="1025" alt="«Ассистент по звонкам»: панель агента во время звонка" loading="lazy"></button><figcaption>Панель агента во время звонка</figcaption></figure>
+        </div>
+      </article>
+
+      <!-- 05 АРТ МАСТЕРСКАЯ -->
+      <article class="project" id="art">
+        <div class="project__text">
+          <div class="project__num">05 · мини-приложение VK Max</div>
+          <h3>«АРТ МАСТЕРСКАЯ» — витрина сувенирного магазина</h3>
+          <p class="project__tagline">Мини-приложение для покупателей и панель управления для продавцов.</p>
+          <ul>
+            <li>Витрина под телефон: категории, карточки товаров с несколькими фото, бронирование в два касания.</li>
+            <li><strong>Брони с подтверждением:</strong> товар уходит с витрины только после одобрения продавцом.</li>
+            <li>Панель управления: товары, рекомендуемые позиции, метрика посещений и реферальные ссылки.</li>
+            <li>Отдельно решены особенности iOS: клавиатура поверх окон и прокрутка под модальным окном.</li>
+            <li>Развёрнуто на VPS: Nginx с ограничением частоты запросов, PM2, Cloudflare.</li>
+          </ul>
+          <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Framer Motion</span><span class="tag">NestJS</span><span class="tag">Prisma</span><span class="tag">SQLite</span></div>
+        </div>
+        <div class="shots" data-gallery="«АРТ МАСТЕРСКАЯ»">
+          <figure class="shot"><button type="button"><img src="img/art-admin.webp" width="1440" height="900" alt="«АРТ МАСТЕРСКАЯ»: панель управления товарами" loading="lazy"></button><figcaption>Панель управления</figcaption></figure>
+          <figure class="shot"><button type="button"><img src="img/art-vitrine.webp" width="780" height="1400" alt="«АРТ МАСТЕРСКАЯ»: витрина на телефоне" loading="lazy"></button><figcaption>Витрина на телефоне</figcaption></figure>
+          <figure class="shot"><button type="button"><img src="img/art-product.webp" width="780" height="1688" alt="«АРТ МАСТЕРСКАЯ»: карточка товара с бронированием" loading="lazy"></button><figcaption>Карточка товара</figcaption></figure>
+        </div>
+      </article>
+
+      <!-- 06 Profi -->
+      <article class="project" id="profi">
+        <div class="project__text">
+          <div class="project__num">06 · десктоп · Windows и macOS</div>
+          <h3>Монитор заказов Profi.ru → Telegram</h3>
+          <p class="project__tagline">Программа следит за новыми заказами на Profi.ru и сразу присылает их в Telegram.</p>
+          <ul>
+            <li>Сама переживает обрывы сети и просит войти заново, если сессия на сайте слетела.</li>
+            <li>Каждый подключает своего Telegram-бота по ссылке, настройки — в окне программы.</li>
+            <li><strong>Сборки для Windows и macOS через GitHub Actions</strong> со смоук-тестом каждой сборки; номер сборки в заголовке, чтобы сразу видеть версию.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Playwright</span><span class="tag">customtkinter</span><span class="tag">Telegram Bot API</span><span class="tag">PyInstaller</span><span class="tag">GitHub Actions</span></div>
+        </div>
+        <div class="shots shots--single" data-gallery="Монитор Profi.ru">
+          <figure class="shot"><button type="button"><img src="img/profi.webp" width="881" height="630" alt="Монитор заказов Profi.ru: окно программы на macOS" loading="lazy"></button><figcaption>Окно программы — снимок из автотеста сборки для macOS</figcaption></figure>
+        </div>
+      </article>
+
+      <!-- 07 n8n -->
+      <article class="project project--wide" id="n8n">
+        <div class="project__text">
+          <div class="project__num">07 · автоматизация · n8n</div>
+          <h3>Контент-конвейер для Telegram-канала</h3>
+          <p class="project__tagline">Посты из других источников сами собираются, переписываются нейросетью и после одобрения уходят в канал — сразу или по расписанию.</p>
+          <ul>
+            <li>Три сценария n8n, около 50 узлов: сбор и разбор, модерация и публикация, ночная очистка данных.</li>
+            <li><strong>Модерация кнопками в Telegram:</strong> опубликовать, переписать заново, запланировать на дату.</li>
+            <li>Текст, фото и видео обрабатываются отдельно; защита от двойных нажатий; статусы видны в Google-таблице.</li>
+          </ul>
+          <div class="tags"><span class="tag">n8n</span><span class="tag">Google Sheets</span><span class="tag">Telegram Bot API</span><span class="tag">OpenAI API</span><span class="tag">JavaScript</span></div>
+        </div>
+        <div class="flow-box" role="img" aria-label="Схема конвейера: таблица со ссылками, загрузка поста, переписывание нейросетью, модерация в Telegram, публикация в канал, статус в таблице">
+          <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+            <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor" style="color: var(--ink-3)"/></marker></defs>
+            <g class="flow-node"><rect x="10" y="30" width="150" height="62" rx="10"/><text x="24" y="56">Google-таблица</text><text class="sub" x="24" y="76">ссылки, раз в 5 минут</text></g>
+            <g class="flow-node"><rect x="200" y="30" width="150" height="62" rx="10"/><text x="214" y="56">Загрузка поста</text><text class="sub" x="214" y="76">HTML → текст и медиа</text></g>
+            <g class="flow-node ai"><rect x="390" y="30" width="150" height="62" rx="10"/><text x="404" y="56">Нейросеть</text><text class="sub" x="404" y="76">переписывает текст</text></g>
+            <g class="flow-node"><rect x="560" y="120" width="150" height="62" rx="10"/><text x="574" y="146">Модерация</text><text class="sub" x="574" y="166">кнопки в Telegram</text></g>
+            <g class="flow-node"><rect x="200" y="218" width="150" height="62" rx="10"/><text x="214" y="244">Канал</text><text class="sub" x="214" y="264">сразу или по дате</text></g>
+            <g class="flow-node"><rect x="10" y="218" width="150" height="62" rx="10"/><text x="24" y="244">Статус в таблице</text><text class="sub" x="24" y="264">«Опубликовано»</text></g>
+            <g class="flow-node"><rect x="390" y="218" width="150" height="62" rx="10"/><text x="404" y="244">Планировщик</text><text class="sub" x="404" y="264">ждёт нужную дату</text></g>
+            <path class="flow-arrow" d="M160 61 H198"/>
+            <path class="flow-arrow" d="M350 61 H388"/>
+            <path class="flow-arrow" d="M540 61 H635 V118"/>
+            <path class="flow-arrow" d="M610 182 V249 H542"/>
+            <path class="flow-arrow" d="M390 249 H352"/>
+            <path class="flow-arrow" d="M200 249 H162"/>
+            <path class="flow-arrow" d="M585 120 V108 H465 V94" stroke-dasharray="4 4"/>
+            <text class="flow-label" x="430" y="124">переписать заново</text>
+            <text class="flow-label" x="520" y="208">опубликовать</text>
+          </svg>
+        </div>
+      </article>
+
+      <!-- 08 Конструктор ботов -->
+      <article class="project" id="bots">
+        <div class="project__text">
+          <div class="project__num">08 · десктоп · no-code</div>
+          <h3>Конструктор Telegram-ботов</h3>
+          <p class="project__tagline">Собрать бота без кода: сценарий рисуется схемой, бот запускается и выкладывается на сервер из того же окна.</p>
+          <ul>
+            <li><strong>Визуальный редактор:</strong> команды, сообщения с кнопками, ввод данных, запись ответов в Google-таблицу.</li>
+            <li>Масштаб, перетаскивание, авторасстановка узлов.</li>
+            <li>Запуск ботов на компьютере и выкладка на VPS в один клик по SSH, логи прямо в окне.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">customtkinter</span><span class="tag">Telegram Bot API</span><span class="tag">Google Sheets API</span><span class="tag">Paramiko</span></div>
+        </div>
+        <div class="shots shots--single" data-gallery="Конструктор ботов">
+          <figure class="shot"><button type="button"><img src="img/botx-flow.webp" width="1202" height="560" alt="Конструктор ботов: схема сценария бота" loading="lazy"></button><figcaption>Схема сценария бота</figcaption></figure>
+        </div>
+      </article>
+
+      <!-- 09 Сайты -->
+      <article class="project" id="sites">
+        <div class="project__text">
+          <div class="project__num">09 · сайты</div>
+          <h3>Сайты и лендинги</h3>
+          <p class="project__tagline">Сайты с личным кабинетом, онлайн-оплатой и SEO.</p>
+          <ul>
+            <li><strong>VASVIDNO</strong> — сервис продвижения: регистрация и личный кабинет, калькулятор и онлайн-оплата заказа, партнёрская программа, админ-панель, SEO-блог.</li>
+            <li><strong>VASVIDNO Agency</strong> — сайт маркетингового агентства: услуги, кейсы, блог, заявки в Telegram.</li>
+          </ul>
+          <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">JWT</span><span class="tag">Prisma</span><span class="tag">SQLite</span><span class="tag">SEO</span></div>
+        </div>
+        <div class="shots" data-gallery="Сайты">
+          <figure class="shot"><button type="button"><img src="img/vasvidno.webp" width="1440" height="900" alt="VASVIDNO: главная страница" loading="lazy"></button><figcaption>VASVIDNO</figcaption></figure>
+          <figure class="shot"><button type="button"><img src="img/agency.webp" width="1440" height="900" alt="VASVIDNO Agency: главная страница" loading="lazy"></button><figcaption>VASVIDNO Agency</figcaption></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="more">
+    <div class="wrap">
+      <div class="section__head"><h2>Другие проекты</h2></div>
+      <div class="mini-grid">
+        <div class="mini"><h3>«Диктовка»</h3><p>Голосовой ввод текста в любую программу по горячей клавише. Распознавание без интернета, значок в трее, автозапуск.</p><div class="tags"><span class="tag">Python</span><span class="tag">GigaAM</span><span class="tag">Win32</span></div></div>
+        <div class="mini"><h3>Парсер Telegram-каналов</h3><p>Следит за выбранными каналами и сохраняет новые посты вместе с фото и видео в базу.</p><div class="tags"><span class="tag">Python</span><span class="tag">Telethon</span><span class="tag">SQLite</span></div></div>
+        <div class="mini"><h3>Анализатор объявлений Авито</h3><p>Сравнивает объявление с конкурентами, смотрит позиции в поиске и собирает PDF-отчёт.</p><div class="tags"><span class="tag">FastAPI</span><span class="tag">Playwright</span><span class="tag">PDF</span></div></div>
+        <div class="mini"><h3>Сайт строительной компании</h3><p>Каталог беседок, галерея работ и панель управления для сотрудников.</p><div class="tags"><span class="tag">Next.js</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span></div></div>
+        <div class="mini"><h3>Генератор каруселей для соцсетей</h3><p>Текст поста → готовые слайды 1080×1350 со шрифтами, выделением и эмодзи. Сделано под свою работу в SMM.</p><div class="tags"><span class="tag">Python</span><span class="tag">Pillow</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="certificates">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Сертификаты</h2>
+        <p class="section__note">Курсы Claude Academy от Anthropic, октябрь 2026. У каждого сертификата есть страница проверки.</p>
+      </div>
+      <div class="certs">
+        <div class="cert"><img src="img/cert-building-with-the-claude-api.webp" width="720" height="491" alt="Сертификат Building with the Claude API" loading="lazy"><div class="cert__body"><div class="cert__title">Building with the Claude API</div><div class="cert__meta">ИИ в продуктах через API: tool use, RAG, агенты</div><a href="https://academy.claude.com/verify/143eb3d01ab07862f0d99ff027ec9b13" target="_blank" rel="noopener">Проверить →</a></div></div>
+        <div class="cert"><img src="img/cert-claude-code-in-action.webp" width="720" height="491" alt="Сертификат Claude Code in Action" loading="lazy"><div class="cert__body"><div class="cert__title">Claude Code in Action</div><div class="cert__meta">Разработка с ИИ-агентом</div><a href="https://academy.claude.com/verify/b7a57b3b569819b232c35a5f92b7f3cd" target="_blank" rel="noopener">Проверить →</a></div></div>
+        <div class="cert"><img src="img/cert-claude-code-101.webp" width="720" height="491" alt="Сертификат Claude Code 101" loading="lazy"><div class="cert__body"><div class="cert__title">Claude Code 101</div><div class="cert__meta">Разработка с ИИ-агентом</div><a href="https://academy.claude.com/verify/63d909c30083ed6354de692c1c31e39d" target="_blank" rel="noopener">Проверить →</a></div></div>
+        <div class="cert"><img src="img/cert-claude-platform-101.webp" width="720" height="491" alt="Сертификат Claude Platform 101" loading="lazy"><div class="cert__body"><div class="cert__title">Claude Platform 101</div><div class="cert__meta">Приложения на платформе Claude</div><a href="https://academy.claude.com/verify/110ef843148bae8ef71601aa0850ed5b" target="_blank" rel="noopener">Проверить →</a></div></div>
+        <div class="cert"><img src="img/cert-introduction-to-model-context-protocol.webp" width="720" height="491" alt="Сертификат Introduction to Model Context Protocol" loading="lazy"><div class="cert__body"><div class="cert__title">Introduction to Model Context Protocol</div><div class="cert__meta">Подключение ИИ к сервисам (MCP)</div><a href="https://academy.claude.com/verify/c7a71ec27e87d8b9565d5a3efbbf20a2" target="_blank" rel="noopener">Проверить →</a></div></div>
+        <div class="cert"><img src="img/cert-ai-fluency-for-builders.webp" width="720" height="491" alt="Сертификат AI Fluency for Builders" loading="lazy"><div class="cert__body"><div class="cert__title">AI Fluency for Builders</div><div class="cert__meta">Создание продуктов с ИИ</div><a href="https://academy.claude.com/verify/c996c0a54b017f8fd9531cc3389565ff" target="_blank" rel="noopener">Проверить →</a></div></div>
+        <div class="cert"><img src="img/cert-ai-capabilities-and-limitations.webp" width="720" height="491" alt="Сертификат AI Capabilities and Limitations" loading="lazy"><div class="cert__body"><div class="cert__title">AI Capabilities and Limitations</div><div class="cert__meta">Возможности и ограничения ИИ</div><a href="https://academy.claude.com/verify/e4ae994262e8323f7846863bda39da39" target="_blank" rel="noopener">Проверить →</a></div></div>
+        <div class="cert"><img src="img/cert-claude-101.webp" width="720" height="491" alt="Сертификат Claude 101" loading="lazy"><div class="cert__body"><div class="cert__title">Claude 101</div><div class="cert__meta">Работа с Claude</div><a href="https://academy.claude.com/verify/b8179f282aa74a686823c12020ad8e8a" target="_blank" rel="noopener">Проверить →</a></div></div>
+        <div class="cert"><img src="img/cert-ai-fluency-for-creative-work.webp" width="720" height="491" alt="Сертификат AI Fluency for Creative Work" loading="lazy"><div class="cert__body"><div class="cert__title">AI Fluency for Creative Work</div><div class="cert__meta">ИИ в творческих задачах</div><a href="https://academy.claude.com/verify/d041832a5fc8329a3690c2911862b9a5" target="_blank" rel="noopener">Проверить →</a></div></div>
+        <div class="cert"><img src="img/cert-ai-fluency-for-educators.webp" width="720" height="491" alt="Сертификат AI Fluency for Educators" loading="lazy"><div class="cert__body"><div class="cert__title">AI Fluency for Educators</div><div class="cert__meta">ИИ в обучении</div><a href="https://academy.claude.com/verify/c317de5db159e39bb7743f23a68107d6" target="_blank" rel="noopener">Проверить →</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section__head"><h2>Навыки</h2></div>
+      <div class="skills">
+        <div class="skill skill--main"><h3>Разработка с ИИ</h3><div class="tags"><span class="tag">Claude Code</span><span class="tag">Промпт-инжиниринг</span><span class="tag">LLM API: Claude, Qwen, OpenAI</span><span class="tag">Ollama</span><span class="tag">Tool use · ИИ-агенты</span><span class="tag">RAG · ChromaDB</span><span class="tag">MCP</span></div></div>
+        <div class="skill"><h3>Веб</h3><div class="tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Tailwind</span><span class="tag">NestJS</span><span class="tag">Node.js · Express</span><span class="tag">FastAPI</span><span class="tag">REST · WebSocket</span></div></div>
+        <div class="skill"><h3>Данные и сервер</h3><div class="tags"><span class="tag">PostgreSQL</span><span class="tag">SQLite</span><span class="tag">Prisma</span><span class="tag">Linux · Ubuntu</span><span class="tag">Nginx</span><span class="tag">PM2</span><span class="tag">Git · GitHub Actions</span></div></div>
+        <div class="skill"><h3>Программы, голос и автоматизация</h3><div class="tags"><span class="tag">Python</span><span class="tag">pywebview · tkinter</span><span class="tag">PyInstaller</span><span class="tag">Playwright</span><span class="tag">Telegram API</span><span class="tag">n8n</span><span class="tag">Распознавание и синтез речи</span><span class="tag">Компьютерное зрение</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap contact">
+      <div>
+        <h2>Контакты</h2>
+        <p>Ищу работу AI-разработчиком: веб-сервисы, внедрение ИИ, автоматизация и оптимизация бизнес-процессов. Учусь на интернет-маркетинге в «Синергии», поэтому смотрю на продукт и глазами бизнеса.</p>
+      </div>
+      <div class="contact__list">
+        <a class="contact__item contact__item--tg" href="https://t.me/shapishkin" target="_blank" rel="noopener">
+          <span class="contact__tg"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.5 2.8c.9-.3 1.6.2 1.4 1.5Z"/></svg>Написать в Telegram</span>
+          <b>@shapishkin</b>
+        </a>
+        <button class="contact__item" type="button" data-copy="rohupkinalex56@mail.ru" aria-label="Скопировать почту rohupkinalex56@mail.ru">
+          <span>Почта<span class="no-print"> · нажмите, чтобы скопировать</span></span><b>rohupkinalex56@mail.ru</b>
+        </button>
+        <div class="contact__item"><span>Город</span><b>Санкт-Петербург · готов к удалёнке</b></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Алексей Рощупкин</div>
+</footer>
+
+<div class="toast" hidden role="status" aria-live="polite"></div>
+
+<div class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Просмотр скриншота">
+  <img alt="">
+  <div class="lightbox__bar">
+    <button class="lb-btn" data-lb="prev" type="button" aria-label="Предыдущий">←</button>
+    <span></span>
+    <button class="lb-btn" data-lb="next" type="button" aria-label="Следующий">→</button>
+    <button class="lb-btn" data-lb="close" type="button">Закрыть</button>
+  </div>
+</div>
+
+<script>
+// копирование почты с уведомлением
+(() => {
+  const toast = document.querySelector(".toast");
+  let timer = null;
+  function notify(text) {
+    toast.textContent = text;
+    toast.hidden = false;
+    clearTimeout(timer);
+    timer = setTimeout(() => (toast.hidden = true), 2200);
+  }
+  function fallbackCopy(text) {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(area);
+    area.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) {}
+    area.remove();
+    return ok;
+  }
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.dataset.copy;
+      let ok = false;
+      try { await navigator.clipboard.writeText(text); ok = true; } catch (e) { ok = fallbackCopy(text); }
+      notify(ok ? "Почта скопирована: " + text : "Не удалось скопировать — почта: " + text);
+    });
+  });
+})();
+
+(() => {
+  const box = document.querySelector(".lightbox");
+  const img = box.querySelector("img");
+  const caption = box.querySelector("span");
+  let items = [], index = 0, opener = null;
+
+  function show(i) {
+    index = (i + items.length) % items.length;
+    const el = items[index].querySelector("img");
+    const cap = items[index].querySelector("figcaption");
+    img.src = el.src;
+    img.alt = el.alt;
+    const name = items[index].closest("[data-gallery]").dataset.gallery;
+    caption.textContent = name + (cap ? " — " + cap.textContent : "") + (items.length > 1 ? `  ·  ${index + 1} / ${items.length}` : "");
+    box.querySelectorAll("[data-lb=prev], [data-lb=next]").forEach((b) => (b.hidden = items.length < 2));
+  }
+  function close() {
+    box.hidden = true;
+    document.body.style.overflow = "";
+    if (opener) opener.focus();
+  }
+  document.querySelectorAll(".shot button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const gallery = btn.closest("[data-gallery]");
+      items = gallery.matches(".shot") ? [gallery] : [...gallery.querySelectorAll(".shot")];
+      opener = btn;
+      show(items.indexOf(btn.closest(".shot")));
+      box.hidden = false;
+      document.body.style.overflow = "hidden";
+      box.querySelector("[data-lb=close]").focus();
+    });
+  });
+  box.addEventListener("click", (e) => {
+    const action = e.target.dataset.lb;
+    if (action === "prev") show(index - 1);
+    else if (action === "next") show(index + 1);
+    else if (action === "close" || e.target === box) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (box.hidden) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") show(index - 1);
+    if (e.key === "ArrowRight") show(index + 1);
+  });
+})();
+</script>
+</body>
+</html>
